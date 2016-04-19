@@ -1,0 +1,28 @@
+<h1>All Posts</h1>
+
+<%= form_tag(posts_path, :method => "get") do %>
+  <%= text_field_tag :search_term, params[:search_term], placeholder: "Search Posts" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if @found_posts.present? %>
+  <h4>[ Found Posts ]</h4>
+  <% @found_posts.each do |post| %>
+    <div>
+      <%= link_to post.title, post_path(post) %>
+    </div>
+  <% end %>
+<% elsif @found_posts.empty? %>
+  <% @posts = @posts.limit(2) %>
+
+  <% @posts.each do |post| %>
+    <div>
+      <%= link_to post.title, post_path(post) %>
+    </div>
+  <% end %>
+
+  <%= button_to @posts.offset(2) %>
+
+<% else%>
+  <p>There are no posts containing the term: <%= params[:search_term] %></p>
+<% end %>
