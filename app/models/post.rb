@@ -15,6 +15,10 @@ class Post < ActiveRecord::Base
     category_id ? Category.find(category_id).title : "N/A"
   end
 
+  def user_full_name
+    user ? user.full_name : "Anonymous"
+  end
+
   private
 
   def self.search(search_term)

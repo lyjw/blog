@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   #   errors.add(:new_password, "can't be the same as current password") if :password == :new_password
   # end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
 end

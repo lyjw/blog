@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   post "/users/:id/change_password" => "users#update_password"
   patch "/users/:id/change_password" => "users#update_password"
 
-  resources :sessions, only: [:new, :create]
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+  end
 
   root "home#index"
 
