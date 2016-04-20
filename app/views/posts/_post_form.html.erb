@@ -10,6 +10,11 @@
     <%= f.text_area :body %>
   </div>
 
+  <div>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.order(:title), :id, :title %>
+  </div>
+
   <%= f.submit %>
 
 <% end %>

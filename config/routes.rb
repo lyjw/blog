@@ -3,10 +3,30 @@ Rails.application.routes.draw do
   get "/home" => "home#index"
   get "/about" => "home#about"
 
-  resources :posts
-  resources :comments
+  resources :posts do
+    resources :comments
+  end
+
+  resources :users
+  get "/users/:id/change_password" => "users#change_password", as: :change_password
+  post "/users/:id/change_password" => "users#update_password"
+  patch "/users/:id/change_password" => "users#update_password"
+
+  resources :sessions, only: [:new, :create]
 
   root "home#index"
+
+  # Route helper, i.e. as: :new_question
+  # get "/questions/new"      => "questions#new"    ,  as: :new_question
+  # post "/questions"         => "questions#create" ,  as: :questions
+  # get "/questions/:id"      => "questions#show"   ,  as: :question
+  # get "/questions"          => "questions#index"
+  # get "/questions/:id/edit" => "questions#edit"   ,  as: :edit_question
+  # patch "/questions/:id"    => "questions#update"
+  # delete "/questions/:id"   => "questions#destroy",  as: :delete_question
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,21 @@
+<h1><%= current_user.first_name %>'s Profile</h1>
+
+<h4>First Name: <%= current_user.first_name %></h4>
+<h4>Last Name: <%= current_user.last_name %></h4>
+<h4>Email: <%= current_user.email %></h4>
+
+<div>
+  <%= link_to edit_user_path(current_user) do %>
+    <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Edit Personal Details</h3>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to change_password_path(current_user) do %>
+  <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Change Password</h3>
+  <% end %>
+</div>
+
+<div>
+
+</div>
