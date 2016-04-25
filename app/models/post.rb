@@ -3,6 +3,9 @@ class Post < ActiveRecord::Base
   has_many :categories, dependent: :nullify
   belongs_to :user
 
+  has_many :favourites, dependent: :destroy
+  has_many :users, through: :favourites
+
   validates :title, presence: true, uniqueness: { case_insensitive: true }, length: { minimum: 7 }
 
   validates :body, presence: true
@@ -15,8 +18,12 @@ class Post < ActiveRecord::Base
     category_id ? Category.find(category_id).title : "N/A"
   end
 
-  def user_full_name
+  def author
     user ? user.full_name : "Anonymous"
+  end
+
+  def favourite_of(user)
+    favourites.find_by_user_id(user.id) if user
   end
 
   private

@@ -9,3 +9,7 @@
 # 10.times do
 #   Category.create(title: Faker::Book.genre)
 # end
+
+20.times do
+  FactoryGirl.create(:post)
+end

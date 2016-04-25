@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "validations" do
+    it "requires a body" do
+      c = Comment.new FactoryGirl.attributes_for(:comment, body: "")
+      expect(c).to be_invalid
+    end
+  end
+
 end

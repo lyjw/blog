@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   get "/about" => "home#about"
 
   resources :posts do
-    resources :comments
+    resources :comments, only: [:create, :edit, :update, :destroy]
+    resources :favourites, only: [:create, :destroy]
   end
 
-  resources :users
+  resources :users do
+    resources :favourites, only: [:index]
+  end
+  
   get "/users/:id/change_password" => "users#change_password", as: :change_password
   post "/users/:id/change_password" => "users#update_password"
   patch "/users/:id/change_password" => "users#update_password"

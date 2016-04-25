@@ -3,11 +3,10 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @found_posts = []
     @posts = Post.all
 
-    if params[:search_term] && params[:search_term] != ""
-      @found_posts = Post.search(params[:search_term]).order('title')
+    if @posts.count > 10
+      @posts = Post.page(params[:page]).per(5)
     end
   end
 
@@ -32,11 +31,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path, alert: "Access Denied" unless can? :edit, @post
+    redirect_to post_path(@post), alert: "Access Denied" unless can? :edit, @post
   end
 
   def update
-    redirect_to root_path, alert: "Access Denied" unless can? :update, @post
+    redirect_to post_path(@post), alert: "Access Denied" unless can? :update, @post
 
     if @post.update post_params
       redirect_to post_path(@post), notice: "Post updated."
@@ -47,10 +46,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    redirect_to root_path, alert: "Access Denied" unless can? :destroy, @post
+    redirect_to post_path(@post), alert: "Access Denied" unless can? :destroy, @post
 
-    @post = Post.find params[:id]
-    @post.delete
+    @post.destroy
     flash[:alert] = "Post deleted."
     redirect_to posts_path
   end

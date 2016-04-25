@@ -4,6 +4,8 @@ class Ability
   def initialize(user)
     user ||= User.new
 
+    can :manage, :all if user.admin?
+
     alias_action :create, :read, :update, :destroy, :to => :crud
 
     can :crud, Post do |post|
@@ -12,6 +14,15 @@ class Ability
 
     can :crud, Comment do |comment|
       (comment.post.user == user || comment.user == user) && user.persisted?
+    end
+
+    can :favourite, Post do |q|
+      # User cannot like their own questions
+      q.user != user
+    end
+
+    can :destroy, Favourite do |f|
+      f.user == user
     end
 
     # Define abilities for the passed in user here. For example:

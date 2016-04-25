@@ -14,7 +14,12 @@
     </div>
   <% end %>
 
-<% elsif @found_posts.empty? %>
+<% elsif @found_posts == nil %>
+
+
+
+  <%= paginate @posts %>
+  <%= page_entries_info @posts %>
 
   <% @posts.each do |post| %>
     <div>

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :find_user, only: [:edit, :update, :change_password, :update_password]
 
   def new
@@ -33,18 +32,6 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "Password incorrect. Profile was not updated."
       render :edit
-    end
-  end
-
-  def create
-    @user = User.find_by_email params[:email]
-
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect_to root_path, notice: "Logged in"
-    else
-      flash[:alert] = "Wrong email or password. Please try again."
-      render :new
     end
   end
 
