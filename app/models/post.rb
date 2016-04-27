@@ -6,6 +6,9 @@ class Post < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :users, through: :favourites
 
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
+
   validates :title, presence: true, uniqueness: { case_insensitive: true }, length: { minimum: 7 }
 
   validates :body, presence: true

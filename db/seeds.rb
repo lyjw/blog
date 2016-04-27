@@ -10,6 +10,10 @@
 #   Category.create(title: Faker::Book.genre)
 # end
 
+# 20.times do
+#   FactoryGirl.create(:post)
+# end
+
 20.times do
-  FactoryGirl.create(:post)
+  Tag.create(name: Faker::Hipster.word)
 end

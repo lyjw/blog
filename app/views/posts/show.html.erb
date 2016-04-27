@@ -1,5 +1,13 @@
 <h1><%= @post.title %></h1>
 
+<div class="post-tags">
+  <% @post.tags.each do |tag| %>
+    <button class="btn btn-default btn-sm" type="button">
+      <span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;&nbsp;<%= tag.name %>
+    </button>
+  <% end %>
+</div>
+
 <p>Author: <%= @post.author %>
 
 <p>
@@ -20,7 +28,7 @@
 </div>
 
 <div>
-  
+
   <% if can? :favourite, @post %>
     <% if @post.favourite_of(current_user) %>
       <%= link_to "Remove from Favourites", post_favourite_path(@post, @post.favourite_of(current_user)), method: :delete %>

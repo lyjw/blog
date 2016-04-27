@@ -8,34 +8,64 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
 <body>
-  <div class="container">
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+
+    <div class="container">
+
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <%= link_to home_path do %>
+          <div class="navbar-brand logo brand">
+            <!-- <span class="glyphicon glyphicon-bold"></span> -->
+            <span class="blog-logo">b</span>
+          </div>
+        <% end %>
+
+      </div>
+
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Explore", posts_path %></li>
+
+          <% if user_signed_in? %>
+
+          <li class="dropdown active">
+
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"> <b><%= "#{ current_user.first_name }" %></b>  <span class="caret"></span></a>
+
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to "Profile", user_path(current_user) %></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Your Favourites</a></li>
+              <li><%= link_to "Your Posts", new_post_path %></li>
+              <li><%= link_to "New Post", new_post_path %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Log Out", sessions_path, method: :delete, data: { confirm: "Are you sure you want to log out?" } %></li>
+            </ul>
+
+          </li>
+          <% else %>
+            <li><%= link_to "Sign Up", new_user_path %></li>
+            <li><%= link_to "Sign In", new_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-wrapper">
 
     <div>
       <%= notice || alert %>
-    </div>
-
-    <hr>
-
-    <%= link_to "Home", home_path %> |
-    <%= link_to "About", about_path %> |
-    <%= link_to "Posts", posts_path %> |
-
-    <% if user_signed_in? %>
-      <%= link_to "New Post", new_post_path %>
-    <% end %>
-
-    <div class="user-services">
-
-      <% if user_signed_in? %>
-        Welcome, <%= link_to "#{ current_user.first_name }", user_path(current_user) %> |
-        <%= link_to "Your Favourites", user_favourites_path(current_user) %>
-        |
-        <%= link_to "Log Out", sessions_path, method: :delete, data: { confirm: "Are you sure you want to log out?" } %>
-      <% else %>
-        <%= link_to "Sign Up", new_user_path %> |
-        <%= link_to "Sign In", new_session_path %>
-      <% end %>
-
     </div>
 
     <%= yield %>

@@ -1,29 +1,74 @@
 <% if @post.errors.any? %>
-  <h2>Error:</h2>
-  <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+
+  <div class="alert alert-danger" role="alert">
+    <h4>Error:</h4>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <%= form_for @post do |f| %>
 
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-1 col-lg-1 col-sm-2 col-lg-offset-1">
+        <%= f.label :title %>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-9">
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-1 col-lg-1 col-sm-2 col-lg-offset-1">
+        <%= f.label :body %>
+      </div>
+
+      <div class="col-lg-9 col-md-9 col-sm-9">
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :category %>
-    <%= f.collection_select :category_id, Category.order(:title), :id, :title %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-1 col-lg-1 col-sm-2 col-lg-offset-1">
+        <%= f.label :category %>
+      </div>
+
+      <div class="col-lg-9 col-md-9 col-sm-9">
+        <%= f.collection_select :category_id, Category.order(:title), :id, :title, {},  { class: "form-control" } %>
+      </div>
+    </div>
   </div>
 
-  <%= f.submit %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-1 col-lg-1 col-sm-2 col-lg-offset-1">
+        <%= f.label :tag_ids, "Tags" %>
+      </div>
+
+      <div class="col-lg-9 col-md-9 col-sm-9">
+        <div class="row">
+          <%= f.collection_check_boxes(:tag_ids, Tag.order(:name), :id, :name) do |c| %>
+            <span class="checkbox-s col-md-3 col-sm-3 col-xs-4">
+              <%= c.label { c.check_box + c.text }%>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 text-center post-submit">
+      <%= f.submit "Create Post", class: "btn btn-default"%>
+    </div>
+  </div>
 
 <% end %>
