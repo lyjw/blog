@@ -24,11 +24,13 @@ class UsersController < ApplicationController
 
   def update
     if @user.authenticate(user_params[:password])
+
       if @user.update user_params
-        redirect_to root_path, notice: "Your profile was updated."
+        redirect_to user_path(@user), notice: "Your profile was updated."
       else
         render :edit
       end
+
     else
       flash[:alert] = "Password incorrect. Profile was not updated."
       render :edit

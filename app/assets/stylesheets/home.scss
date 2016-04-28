@@ -19,7 +19,14 @@
   border: 0;
 }
 
-.home-nav .btn-primary {
+.home-nav button.sign-in {
+  background-color: transparent;
+  border-color: #2E5879;
+  margin: 7px 10px 5px 0;
+  padding: 7px 10px;
+}
+
+.home-nav button.sign-up {
   background-color: #2E5879;
   border-color: #2E5879;
   margin-top: 7px;
@@ -28,13 +35,6 @@
 
 .home-nav .btn-primary a {
   color: #D7DCD8;
-}
-
-.home-nav .btn-default {
-  background-color: transparent;
-  border-color: #2E5879;
-  margin: 7px 10px 5px 0;
-  padding: 7px 10px;
 }
 
 .home-nav .btn-default a {

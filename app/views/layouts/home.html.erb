@@ -6,34 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
-  <script>
-    $(document).ready(function() {
-
-      $('.dropdown-toggle').on('mouseenter', function() {
-        $('ul .dropdown-menu').slideDown('fast');
-      });
-
-      $('.dropdown-toggle').on('mouseleave', function() {
-        $('ul .dropdown-menu').slideUp('fast');
-      });
-
-      var showSub = function() {
-        $('ul .dropdown-menu').stop();
-      }
-
-      var hideSub = function() {
-        $('ul .dropdown-menu').slideUp('fast');
-      }
-
-      $('ul .dropdown-menu').hover( showSub, hideSub);
-
-    });
-  </script>
-
+  <link href='https://fonts.googleapis.com/css?family=Dr+Sugiyama' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
+<div class="home-nav">
   <nav class="navbar navbar-default navbar-fixed-top">
 
     <div class="container">
@@ -79,28 +56,23 @@
 
           </li>
           <% else %>
-            <li><%= link_to "Sign Up", new_user_path %></li>
-            <li><%= link_to "Sign In", new_session_path %></li>
+            <li>
+              <button class="btn btn-default sign-in"><%= link_to "Sign In", new_session_path %></button>
+
+            </li>
+
+            <li>
+              <button class="btn btn-primary sign-up"><%= link_to "Sign Up", new_user_path %></button>
+            </li>
+
           <% end %>
         </ul>
       </div>
     </div>
   </nav>
+</div>
 
-    <% if notice %>
-      <div class="alert-bar notice text-center">
-        <%= notice %>
-      </div>
-    <% elsif alert %>
-      <div class="alert-bar alert text-center">
-        <%= alert %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="container-wrapper">
     <%= yield %>
-  </div>
 
 </body>
 </html>

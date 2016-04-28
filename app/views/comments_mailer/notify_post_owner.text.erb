@@ -1,0 +1,8 @@
+Hello <%= @post.user.full_name %>,
+
+<%= @user.full_name.capitalize %> just left a comment on your post titled: <b><%= @post.title %></b>.
+
+Click <%= link_to "here", post_url(@post) %> to view the comment.
+
+Regards,
+Team Blot

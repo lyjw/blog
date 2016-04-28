@@ -19,12 +19,30 @@
 @import url(https://fonts.googleapis.com/css?family=Dr+Sugiyama);
 @import url(https://fonts.googleapis.com/css?family=Poppins);
 
+
 body {
   font-family: 'Poppins', sans-serif;
 }
 
 .container-wrapper {
   margin: 80px 80px 50px 80px;
+}
+
+.alert-bar {
+  margin-top: 50px;
+  height: 40px;
+  width: 100%;
+  color: white;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.alert-bar.notice {
+  background-color: green;
+}
+
+.alert-bar.alert {
+  background-color: #a94442;
 }
 
 .user-services {
