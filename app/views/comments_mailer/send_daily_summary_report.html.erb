@@ -1,0 +1,10 @@
+<h1>Daily Summary Email</h1>
+
+<% @comments.each do |comment| %>
+  <div>
+    Comment on <b><%= comment.post_name %></b> by <%= comment.author %><br>
+      <small> Created at: <%= comment.created_at %></small><br><br>
+    <%= comment.body %>
+  </div>
+  <hr>
+<% end %>
