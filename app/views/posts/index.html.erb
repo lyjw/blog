@@ -1,32 +1,65 @@
-<h1>All Posts</h1>
+<div class="row">
+  <div class="col-md-7 col-sm-7 posts-header">
+    <h1 id="post-heading">All Posts</h1>
+  </div>
 
-<%= form_tag(posts_path, :method => "get") do %>
-  <%= text_field_tag :search_term, params[:search_term], placeholder: "Search Posts" %>
-  <%= submit_tag "Search" %>
-<% end %>
+  <div class="col-md-5 col-sm-5 search-bar">
+    <%= form_tag(posts_path) do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: "form-control empty", id:"search"%>
+      <%= submit_tag "Search", class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
 
-<% if @found_posts.present? %>
+<div id="blog-posts">
 
-  <h4>[ Found Posts ]</h4>
-  <% @found_posts.each do |post| %>
-    <div>
-      <%= link_to post.title, post_path(post) %>
+  <% if @found_posts.present? %>
+
+    <h4>[ Found Posts ]</h4>
+    <% @found_posts.each do |post| %>
+      <div class="row">
+
+        <div class="col-md-4">
+          <h4><%= link_to post.title, post_path(post) %></h4>
+          by <%= post.author %><br><br>
+          <%= post.created_at.localtime %>
+        </div>
+
+        <div class="col-md-8">
+            <%= post.body_snippet %>
+        </div>
+      </div>
+
+      <hr>
+    <% end %>
+
+  <% elsif @found_posts == nil %>
+
+    <% @posts.each do |post| %>
+      <div class="row">
+
+        <div class="col-md-4">
+          <h4><%= link_to post.title, post_path(post) %></h4>
+          by <%= post.author %><br><br>
+          <%= post.created_at.localtime %>
+        </div>
+
+        <div class="col-md-8">
+            <%= post.body_snippet %>
+        </div>
+      </div>
+
+      <hr>
+    <% end %>
+
+    <div class="text-center">
+      <%= paginate @posts %><br>
+      <%= page_entries_info @posts %>
     </div>
+
+  <% else %>
+
+    <p>There are no posts containing the term: <%= params[:search] %></p>
+
   <% end %>
-
-<% elsif @found_posts == nil %>
-
-  <%= paginate @posts %>
-  <%= page_entries_info @posts %>
-
-  <% @posts.each do |post| %>
-    <div>
-      <%= link_to post.title, post_path(post) %>
-    </div>
-  <% end %>
-
-<% else %>
-
-  <p>There are no posts containing the term: <%= params[:search_term] %></p>
-
-<% end %>
+</div>

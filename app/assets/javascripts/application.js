@@ -16,3 +16,25 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function() {
+
+  $('.dropdown-toggle').on('mouseenter', function() {
+    $('ul .dropdown-menu').slideDown('fast');
+  });
+
+  $('.dropdown-toggle').on('mouseleave', function() {
+    $('ul .dropdown-menu').slideUp('fast');
+  });
+
+  var showSub = function() {
+    $('ul .dropdown-menu').stop();
+  }
+
+  var hideSub = function() {
+    $('ul .dropdown-menu').slideUp('fast');
+  }
+
+  $('ul .dropdown-menu').hover( showSub, hideSub);
+
+});

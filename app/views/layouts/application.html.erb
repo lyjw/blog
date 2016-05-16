@@ -7,30 +7,6 @@
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
-  <script>
-    $(document).ready(function() {
-
-      $('.dropdown-toggle').on('mouseenter', function() {
-        $('ul .dropdown-menu').slideDown('fast');
-      });
-
-      $('.dropdown-toggle').on('mouseleave', function() {
-        $('ul .dropdown-menu').slideUp('fast');
-      });
-
-      var showSub = function() {
-        $('ul .dropdown-menu').stop();
-      }
-
-      var hideSub = function() {
-        $('ul .dropdown-menu').slideUp('fast');
-      }
-
-      $('ul .dropdown-menu').hover( showSub, hideSub);
-
-    });
-  </script>
-
 </head>
 <body>
 

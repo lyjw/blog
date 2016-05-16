@@ -6,3 +6,22 @@
 .post-submit {
   margin-top: 30px;
 }
+
+.posts-header {
+  margin-bottom: 30px;
+}
+
+.search-bar {
+  height: 68px;
+  justify-content: center;
+  display: flex;
+
+  form {
+    align-self: center;
+  }
+
+  #search {
+    width: 240px;
+    display: inline;
+  }
+}

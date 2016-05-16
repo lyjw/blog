@@ -70,6 +70,17 @@
       </div>
     </div>
   </nav>
+
+  <% if notice %>
+    <div class="alert-bar notice text-center">
+      <%= notice %>
+    </div>
+  <% elsif alert %>
+    <div class="alert-bar alert text-center">
+      <%= alert %>
+    </div>
+  <% end %>
+
 </div>
 
     <%= yield %>

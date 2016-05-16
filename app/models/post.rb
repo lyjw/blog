@@ -29,9 +29,7 @@ class Post < ActiveRecord::Base
     favourites.find_by_user_id(user.id) if user
   end
 
-  private
-
-  def self.search(search_term)
-      where(["title ILIKE ? OR body ILIKE ?", "%#{search_term}%", "%#{search_term}%"])
+  def self.search(search)
+      where(["title ILIKE ? OR body ILIKE ?", "%#{search}%", "%#{search}%"])
   end
 end

@@ -30,4 +30,6 @@ class FavouritesController < ApplicationController
     @post = Post.find params[:post_id]
   end
 
+  
+
 end

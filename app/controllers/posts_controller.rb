@@ -5,8 +5,14 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
 
-    if @posts.count > 10
-      @posts = Post.page(params[:page]).per(5)
+    if params[:search]
+        @found_posts = Post.search(params[:search]).order("created_at DESC")
+      else
+        @posts = Post.all.order('created_at DESC')
+
+        if @posts.count > 10
+          @posts = Post.page(params[:page]).per(5)
+        end
     end
   end
 

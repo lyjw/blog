@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  layout "home"
 
   def new
   end
@@ -7,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email params[:email]
 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+      sign_in(user)
       redirect_to user_path(user), notice: "Logged in"
     else
       flash[:alert] = "Wrong email or password. Please try again."
