@@ -19,11 +19,14 @@
 
 $(document).ready(function() {
 
-  $('.dropdown-toggle').on('mouseenter', function() {
+  var $dropdownToggle = $('.dropdown-toggle');
+
+
+  $dropdownToggle.on('mouseenter', function() {
     $('ul .dropdown-menu').slideDown('fast');
   });
 
-  $('.dropdown-toggle').on('mouseleave', function() {
+  $dropdownToggle.on('mouseleave', function() {
     $('ul .dropdown-menu').slideUp('fast');
   });
 
@@ -35,6 +38,6 @@ $(document).ready(function() {
     $('ul .dropdown-menu').slideUp('fast');
   }
 
-  $('ul .dropdown-menu').hover( showSub, hideSub);
+  $('ul .dropdown-menu').hover(showSub, hideSub);
 
 });

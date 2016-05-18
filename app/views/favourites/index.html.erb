@@ -2,7 +2,7 @@
 
 <% @favourites.each do |favourite| %>
   <div>
-    <%= link_to favourite.post_title, post_path(favourite.post) %> by <%= favourite.post_author %>
+    <%= link_to favourite.post.title, post_path(favourite.post) %> by <%= favourite.post.author %>
   </div>
   <hr>
 <% end %>

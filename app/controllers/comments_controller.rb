@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_action :find_comment, only: [:edit, :update, :destroy]
 
   def create
-    @comment        = Comment.new comment_params
+    @comment        = @post.comments.new(comment_params)
     @comment.post   = @post
     @comment.user   = current_user
 
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
   end
 
   def find_comment
-    @comment = @post.comments.find params[:id]
+    @comment = current_user.comments.find params[:id]
   end
 
   def comment_params

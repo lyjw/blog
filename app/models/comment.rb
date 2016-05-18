@@ -7,8 +7,4 @@ class Comment < ActiveRecord::Base
   def author
     user ? user.full_name : "Anonymous"
   end
-
-  def post_name
-    Post.find(post_id).title
-  end
 end

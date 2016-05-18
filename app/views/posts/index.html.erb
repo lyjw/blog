@@ -4,7 +4,7 @@
   </div>
 
   <div class="col-md-5 col-sm-5 search-bar">
-    <%= form_tag(posts_path) do %>
+    <%= form_tag(posts_path, method:"GET") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: "form-control empty", id:"search"%>
       <%= submit_tag "Search", class: "btn btn-default" %>
     <% end %>
