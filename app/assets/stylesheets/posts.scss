@@ -1,0 +1,27 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-form,
+.post-submit {
+  margin-top: 30px;
+}
+
+.posts-header {
+  margin-bottom: 30px;
+}
+
+.search-bar {
+  height: 68px;
+  justify-content: center;
+  display: flex;
+
+  form {
+    align-self: center;
+  }
+
+  #search {
+    width: 240px;
+    display: inline;
+  }
+}

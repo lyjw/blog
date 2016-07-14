@@ -1,0 +1,8 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :first_name, label: "Full Name" %>
+  <%= f.input :last_name, label: "Last Name" %>
+  <%= f.input :email, label: "Email Address", placeholder: "you@domain.com" %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation, label: "Password Confirmation" %>
+  <%= f.button :submit %>
+<% end %>

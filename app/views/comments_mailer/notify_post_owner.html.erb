@@ -1,0 +1,12 @@
+<p>Hello <%= @post.user.full_name %>,</p>
+
+<p><%= @user.full_name.capitalize %> just left a comment on your post titled: <b><%= @post.title %></b>.</p>
+
+<div style="background-color: aliceblue; margin: 10px; padding: 10px;">
+  <%= @comment.body %>
+</div>
+
+<p>Click <%= link_to "here", post_url(@post) + "##{@comment.id}" %> to view the comment.</p>
+
+<p>Regards,</p>
+<p>Team Blot</p>

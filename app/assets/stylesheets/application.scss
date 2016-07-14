@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Dr+Sugiyama);
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.container-wrapper {
+  margin: 100px;
+}
+
+.alert-bar {
+  margin-top: 50px;
+  height: 40px;
+  width: 100%;
+  color: white;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.alert-bar.notice {
+  background-color: green;
+}
+
+.alert-bar.alert {
+  background-color: #a94442;
+}
+
+.user-services {
+  float: right;
+  display: inline;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.checkbox-s {
+  display: inline;
+  margin-top: 5px;
+}
+
+.checkbox-s label {
+  font-weight: normal;
+}
+
+.checkbox-s input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.post-tags {
+  margin-bottom: 15px;
+}
+
+.post-tags button {
+  padding: 2px 5px;
+}
+
+.post-tags .glyphicon {
+  font-size: 1em;
+}
+
+.field_with_errors .form-control {
+  border: 1px solid #a94442;
+}
+
+.blog-title {
+  font-family: 'Dr Sugiyama', cursive; font-weight: 400;
+  font-size: 200px;
+  text-align: center;
+}
+
+.blog-logo {
+  font-family: 'Dr Sugiyama', cursive; font-weight: 400;
+  font-size: 50px;
+  color: #2E5879;
+}

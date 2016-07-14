@@ -2,8 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#profile-pic {
-  height: 150px;
-  width: 150px;
-  border-radius: 100px;
+.jumbotron {
+  background-image: url("../assets/ink-spatter.jpg");
+  height: 80vh;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.jumbotron .container {
+  position: relative;
+  top:100px;
+}
+
+.home-nav .navbar-default  {
+  background-color: rgba(191, 202, 193, 0.08);
+  border: 0;
+}
+
+.home-nav button.sign-in {
+  background-color: transparent;
+  border-color: #2E5879;
+  margin: 7px 10px 5px 0;
+  padding: 7px 10px;
+}
+
+.home-nav button.sign-up {
+  background-color: #2E5879;
+  border-color: #2E5879;
+  margin-top: 7px;
+  padding: 7px 10px;
+}
+
+.home-nav .btn-primary a {
+  color: #D7DCD8;
+}
+
+.home-nav .btn-default a {
+  color: #2E5879;
 }
